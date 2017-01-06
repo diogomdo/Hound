@@ -1,8 +1,8 @@
 # Hound Dog App
 Forecast Scraper for several sites
 
-Stack:
-
-SpringBoot
-MongoDB
+Stack:<br>
+<br>
+SpringBoot<br>
+MongoDB<br>
 JSoup
