@@ -1,0 +1,8 @@
+Hound\model\ForecastStation.class
+Hound\services\ReqParser.class
+Hound\services\WeatherWGHttpReq.class
+Hound\HoundApp.class
+Hound\model\WeatherSpotInfo.class
+Hound\Application.class
+Hound\model\ForecastStationRepository.class
+Hound\model\ForecastSpot.class
