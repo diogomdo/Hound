@@ -26,10 +26,10 @@ public class Application implements CommandLineRunner{
 	
 	public void run(String... args) throws Exception{
 		
-//		repo.deleteAll();
+		repo.deleteAll();
 		
 		repo.save(new ForecastStation("windguru","https://www.windguru.cz/", 
-					new ArrayList<ForecastSpot>(){{add(new ForecastSpot(2));}}));
+					new ArrayList<ForecastSpot>(){{add(new ForecastSpot("Loures - Ikea",294783));}}));
 		repo.save(new ForecastStation("meteoblue","https://www.meteoblue.com/en/weather/forecast/week"));
 		
 		System.out.println("All Forecast stations on db");

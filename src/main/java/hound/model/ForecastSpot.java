@@ -1,21 +1,28 @@
 package hound.model;
 
 import java.util.List;
-import hound.services.WeatherWGHttpReq;
+
+import hound.services.DataGatherer;
 
 public class ForecastSpot {
 	
 	private String spotName;
-	private int spotId;
+	private String spotId;
 	private String coordinates;
 	
 	public ForecastSpot() {}
 	
-	public ForecastSpot(int spotId){
-		this.spotId = spotId;		
+	public ForecastSpot(String spotName, String spotId){
+		this.spotId = spotId;
+		this.spotName = spotName;
 	}
 	
 	public List<WeatherSpotInfo> getWeatherData(){
-		return WeatherWGHttpReq.getWeatherData(spotId);
+		return DataGatherer.getDataRequest(spotId);
+	}
+	
+	@Override
+	public String toString(){
+		return String.format("Spot [Name: '%s', ID: '%s']", spotName, spotId);
 	}
 }
