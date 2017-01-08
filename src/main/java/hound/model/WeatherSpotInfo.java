@@ -1,7 +1,7 @@
 package hound.model;
 
-public class WeatherSpotInfo{
-	
+public class WeatherSpotInfo {
+
 	private int spotId;
 	private final Integer day;
 	private final Integer hour;
@@ -9,7 +9,7 @@ public class WeatherSpotInfo{
 	private final Integer precipitation;
 	private final Integer temperature;
 	private final String nebulosityLevel;
-	
+
 	public WeatherSpotInfo(Integer day, Integer hour, String windDirection, Integer precipitation, Integer temperature,
 			String nebulosityLevel) {
 		this.day = day;
@@ -19,7 +19,7 @@ public class WeatherSpotInfo{
 		this.temperature = temperature;
 		this.nebulosityLevel = nebulosityLevel;
 	}
-	
+
 	public WeatherSpotInfo(Integer day, Integer precipitation) {
 		this.day = day;
 		this.hour = null;
@@ -29,5 +29,4 @@ public class WeatherSpotInfo{
 		this.nebulosityLevel = null;
 	}
 
-	
 }
