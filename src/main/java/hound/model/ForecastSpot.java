@@ -9,7 +9,9 @@ public class ForecastSpot {
 	private int spotId;
 	private String coordinates;
 	
-	ForecastSpot(int spotId){
+	public ForecastSpot() {}
+	
+	public ForecastSpot(int spotId){
 		this.spotId = spotId;		
 	}
 	

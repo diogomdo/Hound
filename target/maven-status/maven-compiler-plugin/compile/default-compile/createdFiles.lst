@@ -1,8 +1,9 @@
-Hound\model\ForecastStation.class
-Hound\services\ReqParser.class
-Hound\services\WeatherWGHttpReq.class
-Hound\HoundApp.class
-Hound\model\WeatherSpotInfo.class
-Hound\Application.class
-Hound\model\ForecastStationRepository.class
-Hound\model\ForecastSpot.class
+hound/model/WeatherSpotInfo.class
+hound/model/ForecastStation.class
+hound/Application$1.class
+hound/services/ReqParser.class
+hound/model/ForecastSpot.class
+hound/HoundApp.class
+hound/services/WeatherWGHttpReq.class
+hound/Application.class
+hound/model/ForecastStationRepository.class

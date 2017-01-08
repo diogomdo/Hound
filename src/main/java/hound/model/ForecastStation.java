@@ -22,8 +22,15 @@ public class ForecastStation{
 		this.link = link;
 	}
 	
+	public ForecastStation(String stationName, String link, List spotsList){
+		this.stationName = stationName;
+		this.link = link;
+		this.spotsList = spotsList;
+	}
+	
+	
 	@Override
 	public String toString(){
-		return String.format("Forecast Station[Name: '%s', Link: '%s']", stationName, link);
+		return String.format("Forecast Station[Name: '%s', Link: '%s', Spots: '%s']", stationName, link, spotsList);
 				}
 }
