@@ -1,9 +1,0 @@
-hound\model\ForecastStationRepository.class
-hound\services\DataParser.class
-hound\model\ForecastSpotRepository.class
-hound\Application.class
-hound\HoundApp.class
-hound\model\ForecastStation.class
-hound\model\WeatherSpotInfo.class
-hound\services\DataGatherer.class
-hound\model\ForecastSpot.class
