@@ -12,15 +12,16 @@ import org.jsoup.nodes.DataNode;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.beans.PropertyAccessor;
+import org.springframework.beans.PropertyAccessorFactory;
 
+import hound.model.WGDataResponseCollection;
 import hound.model.WeatherSpotInfo;
 
 public class DataParser {
 
 	public enum StatusType {
-		RH, SMERN, LCDC, initdate, id_model, model_name, hr_d, init_h, HCDC, SLP, hr_h, GUST, init_dm, update_last, FLHGT, 
-		init_d, APCP, TMP, hours, initstr, WINDSPD, TCDC, TMPE, img_param, initstamp, img_var_map, PCPT, MCDC, update_next,
-		WINDDIR, hr_weekday;
+		RH, SMERN, LCDC, initdate, id_model, model_name, hr_d, init_h, HCDC, SLP, hr_h, GUST, init_dm, update_last, FLHGT, init_d, APCP, TMP, hours, initstr, WINDSPD, TCDC, TMPE, img_param, initstamp, img_var_map, PCPT, MCDC, update_next, WINDDIR, hr_weekday;
 	}
 
 	public static List<WeatherSpotInfo> getParsedData(Document weatherPageResponse) {
@@ -38,23 +39,23 @@ public class DataParser {
 			}
 		}
 
-		HashMap<String, ArrayList<Object>> parsableMap = JsonObjtToMap(obj);
-		int cycleSize = parsableMap.get("RH").toString().length();
+		WGDataResponseCollection parsableMap = JsonObjtToMap(obj);
+		int cycleSize = parsableMap.getRh().length();
 		for (int i = 0; i < cycleSize; i++) {
 			for (StatusType s : StatusType.values()) {
-				List<Object> statusColl = (List<Object>) parsableMap.get(s);
+//				List<Object> statusColl = (List<Object>) parsableMap.get(s);
 			}
 		}
 
 		return data;
 	}
 
-	public static HashMap<String, ArrayList<Object>> JsonObjtToMap(JSONObject obj) {
+	public static WGDataResponseCollection JsonObjtToMap(JSONObject obj) {
 
-		// http://stackoverflow.com/questions/14898768/how-to-access-nested-elements-of-json-object-using-getjsonarray-method
-		HashMap<String, ArrayList<Object>> map = new HashMap<String, ArrayList<Object>>();
+		WGDataResponseCollection collConverted = new WGDataResponseCollection();
+		PropertyAccessor myAccessor = PropertyAccessorFactory.forBeanPropertyAccess(collConverted);
+
 		try {
-
 			JSONObject accessWF = obj.getJSONObject("fcst");
 			JSONObject weatherFactors = accessWF.getJSONObject("3");
 
@@ -63,15 +64,14 @@ public class DataParser {
 
 			while (iterator.hasNext()) {
 				key = (String) iterator.next();
-				if (key != null)
-					map.put(key, (ArrayList<Object>) weatherFactors.get(key));
+				if (weatherFactors.get(key) instanceof org.json.JSONArray) {
+					myAccessor.setPropertyValue(key, weatherFactors.get(key.concat("Formated")));
+				}
 			}
-
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return map;
+		return collConverted;
 	}
 
 }
