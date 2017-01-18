@@ -1,8 +1,6 @@
 package hound.services;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -34,7 +32,12 @@ public class DataParser {
 					List<String> jsonObjList = Arrays.asList(dataNode.getWholeData().split(";"));
 					String weatherDataString = jsonObjList.get(0).replaceFirst("^[^{]+", "");
 					System.out.println(weatherDataString);
-					obj = new JSONObject(weatherDataString);
+					try {
+						obj = new JSONObject(weatherDataString);
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 			}
 		}

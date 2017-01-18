@@ -1,10 +1,11 @@
 package hound.model;
 
+import java.io.IOException;
 import java.util.List;
 
 import hound.services.DataGatherer;
 
-public class ForecastSpot {
+public class ForecastSpot extends ForecastStation{
 
 	private String spotName;
 	private String spotId;
@@ -44,7 +45,14 @@ public class ForecastSpot {
 	}
 
 	public List<WeatherSpotInfo> getWeatherData() {
-		return DataGatherer.getDataRequest(spotId);
+		List<WeatherSpotInfo> val = null;
+		try {
+			return DataGatherer.getDataRequest(super.getLink().concat(spotId));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return val;
 	}
 
 	public List<WeatherSpotInfo> getWeatherInfoDetailList() {
