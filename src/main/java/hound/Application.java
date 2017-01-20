@@ -49,8 +49,7 @@ public class Application implements CommandLineRunner {
 			System.out.println(station);
 			if (station.getSpotsList() != null) {
 				for (ForecastSpot spot : station.getSpotsList())
-					spot.getWeatherData();
-//					DataGatherer.getDataRequest(String.format(station.getLink().concat(spot.getSpotId())));
+					spot.getWeatherData(station.getLink());
 			}
 		}
 	}

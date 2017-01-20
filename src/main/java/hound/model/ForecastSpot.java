@@ -44,10 +44,10 @@ public class ForecastSpot extends ForecastStation{
 		this.coordinates = coordinates;
 	}
 
-	public List<WeatherSpotInfo> getWeatherData() {
+	public List<WeatherSpotInfo> getWeatherData(String link) {
 		List<WeatherSpotInfo> val = null;
 		try {
-			return DataGatherer.getDataRequest(super.getLink().concat(spotId));
+			return DataGatherer.getDataRequest(link.concat(spotId));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
